@@ -3,15 +3,15 @@ FROM        --platform=$TARGETOS/$TARGETARCH ibm-semeru-runtimes:open-16-jdk
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
 RUN         apt update -y \
-            && apt install -y sudo curl git \
+            && apt install -y sudo curl software-properties-common \
             && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash \
+            && apt-add-repository -y ppa:git-core/ppa \
             && apt update -y \
             && apt install -y \
                 curl \
                 lsof \
                 ca-certificates \
                 openssl \
-                git \
             	git-lfs  \
                 tar \
                 sqlite3 \

@@ -6,15 +6,15 @@ LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolk
 LABEL       org.opencontainers.image.licenses=MIT
 
 RUN         apt update -y \
-            && apt install -y sudo curl git \
+            && apt install -y sudo curl software-properties-common \
             && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash \
+            && apt-add-repository -y ppa:git-core/ppa \
             && apt update -y \
             && apt install -y \
                 curl \
                 lsof \
                 ca-certificates \
                 openssl \
-                git \
             	git-lfs  \
                 tar \
                 sqlite3 \
