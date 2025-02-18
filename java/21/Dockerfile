@@ -5,9 +5,9 @@ LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-COPY ../install.sh /install.sh
-RUN chmod +x /install.sh
-RUN /install.sh
+COPY ./../install.sh /install.sh
+RUN chmod +x install.sh
+RUN ./install.sh
 
 ## Setup user and working directory
 RUN         useradd -m -d /home/container -s /bin/bash container

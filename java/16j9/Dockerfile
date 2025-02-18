@@ -2,9 +2,9 @@ FROM        --platform=$TARGETOS/$TARGETARCH ibm-semeru-runtimes:open-16-jdk
 
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
-COPY ../install.sh /install.sh
-RUN chmod +x /install.sh
-RUN /install.sh
+COPY ./../install.sh /install.sh
+RUN chmod +x install.sh
+RUN ./install.sh
 
 ## Setup user and working directory
 RUN         useradd -m -d /home/container -s /bin/bash container
