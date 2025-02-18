@@ -2,9 +2,26 @@ FROM        --platform=$TARGETOS/$TARGETARCH ibm-semeru-runtimes:open-8-jdk
 
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
-COPY ./../install.sh /install.sh
-RUN chmod +x install.sh
-RUN ./install.sh
+RUN apt update -y \
+    && apt install -y curl \
+    && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash \
+    && apt update -y \
+    && apt install -y \
+        curl \
+        lsof \
+        ca-certificates \
+        openssl \
+        git \
+        git-lfs \
+        tar \
+        sqlite3 \
+        fontconfig \
+        tzdata \
+        iproute2 \
+        libfreetype6 \
+        tini \
+        zip \
+        unzip
 
 ## Setup user and working directory
 RUN         useradd -m -d /home/container -s /bin/bash container
